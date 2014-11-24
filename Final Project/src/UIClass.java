@@ -156,21 +156,34 @@ public class UIClass
 			
 			if(answer==2)
 			{
-				System.out.println("Choose the index number of the game to delete");
+			System.out.println("Choose the index number of the game to delete");
 				printAllNoTimeDelay();
-				String delName = intKey.nextLine();
-				int cons = -1;
-				for (int i = 0; i < listPosition; i++) {
-					if (list[i].getName().equalsIgnoreCase(delName)) {
-					cons = i;
-					}
+				int delIndex = intKey.nextInt();
+				if (delIndex>listPosition)
+				{
+					System.out.println("There is no game at the specified index.");
 				}
-				if (cons != -1) {
-					for (int i = cons; i < listPosition; i++) {
-						list[i] = list[i+1];
-						listPosition = listPosition-1;
+				else
+				{
+					for( int i= delIndex; i< listPosition;i++)
+					{
+						list[i]= list[i+1];
+						listPosition--;
+						wipeConsole();
+						printAllNoTimeDelay();
+						
 					}
-				}
+					System.out.println("Are you finished?(yes / no)");
+					String confirm= intKey.nextLine();
+					if(confirm.equalsIgnoreCase("yes"))
+					{
+						exitProgram();
+					}
+					else if (confirm.equalsIgnoreCase("no"))
+					{
+						returnToMain();
+					}
+				}	
 			}
 			
 			if(answer==3)
