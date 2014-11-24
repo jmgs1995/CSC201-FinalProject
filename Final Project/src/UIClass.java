@@ -261,6 +261,7 @@ public class UIClass
 		for(int i=0; i<=listPosition;i++) {
 			System.out.println("Showing Index: " + i);
 			list[i].display();
+			finalList=finalList+list[i].setToString();//this is a method that i just added to GameList
 			System.out.println("--------------------------------");
 		}
 	}
@@ -440,6 +441,25 @@ public class UIClass
 		
 		list[listPosition]=game;
 		returnToMain();
+	}
+	
+	private static void writeFile(String list) throws UnsupportedEncodingException
+	/*
+	 * This method gets the string that's been reversed and then saves the file with the string written to
+	 */
+	{
+		PrintWriter writer=null;
+		try 
+		{
+			writer = new PrintWriter("list.txt", "UTF-8");
+			writer.println(list);
+			writer.close();
+			System.out.println("The file was created.");
+		} 
+		catch (FileNotFoundException e) 
+		{
+			
+		}
 	}
 
 }
