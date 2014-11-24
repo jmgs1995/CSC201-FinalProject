@@ -67,6 +67,7 @@ public class UIClass
 			if(answer==1)
 			{
 				wipeConsole();
+				bannerMain();
 				Scanner keyboard = new Scanner(System.in);
 				String introMessageA = "ADDING A GAME TO THE DATABASE";
 				String introMessageB = " ENTER A GENRE FROM BELOW: ";
@@ -86,7 +87,7 @@ public class UIClass
 				introOptionPane[6] = introMenuOptionE;
 				int udBorder = introMessageA.length()+10;
 				int lrBorder;
-				bannerMain();
+				
 				try 
 				{
 				    TimeUnit.SECONDS.sleep(2);
@@ -194,6 +195,7 @@ public class UIClass
 		System.out.println("     |NVCC'S GAME DATABASE EDITOR|");
 		System.out.println("      ---------------------------\n");
 	}
+	
 	public static void loadMain() {
 		Scanner keyboard = new Scanner(System.in);
 		String introMessage = "Welcome to Game Search Engine";
@@ -304,15 +306,24 @@ public class UIClass
 	}
 	
 	public static void wipeConsole() throws AWTException{
-        try {
-        Robot robbie = new Robot();
-        robbie.keyPress(17); // Holds CTRL key.
-        robbie.keyPress(76); // Holds L key.
-        robbie.keyRelease(17); // Releases CTRL key.
-        robbie.keyRelease(76); // Releases L key.
-    	} catch (AWTException ex) {
-        	Logger.getLogger(UIClass.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		Robot robbie = new Robot();
+        //shows the Console View
+        robbie.keyPress(KeyEvent.VK_ALT);
+        robbie.keyPress(KeyEvent.VK_SHIFT);
+        robbie.keyPress(KeyEvent.VK_Q);
+        robbie.keyRelease(KeyEvent.VK_ALT);
+        robbie.keyPress(KeyEvent.VK_SHIFT);
+        robbie.keyPress(KeyEvent.VK_Q);
+        robbie.keyPress(KeyEvent.VK_C);
+        robbie.keyRelease(KeyEvent.VK_C);
+
+        //clears the console
+        robbie.keyPress(KeyEvent.VK_SHIFT);
+        robbie.keyPress(KeyEvent.VK_F10);
+        robbie.keyRelease(KeyEvent.VK_SHIFT);
+        robbie.keyRelease(KeyEvent.VK_F10);
+        robbie.keyPress(KeyEvent.VK_R);
+        robbie.keyRelease(KeyEvent.VK_R);
     }
     
 	public static void setNewRPG(RPG game)
@@ -419,6 +430,7 @@ public class UIClass
 	}
 
 }
+
 /*if(genre.equalsIgnoreCase("RPG"))
 {
 RPG game = new RPG();
